@@ -44,16 +44,12 @@ h2{font-size:clamp(28px,3.2vw,40px);line-height:1.15;margin:0 0 24px}
 /* Startseite: Bühne mit wechselnden Projektbildern */
 .buehne{position:relative;height:min(82vh,760px);min-height:520px;overflow:hidden;background:#ddd}
 .slides{position:absolute;inset:0}
-.slides figure{position:absolute;inset:0;margin:0;opacity:0;animation:hw-fade 30s infinite}
-.slides figure:first-child{opacity:1;animation-delay:-1s}
-.slides figure:nth-child(2){animation-delay:5s}
-.slides figure:nth-child(3){animation-delay:11s}
-.slides figure:nth-child(4){animation-delay:17s}
-.slides figure:nth-child(5){animation-delay:23s}
+/* Dauer und Verzögerung je Bild setzt build.py, passend zur Zahl der Bilder */
+.slides figure{position:absolute;inset:0;margin:0;opacity:0;animation:hw-fade 24s infinite}
+.slides figure:first-child{opacity:1}
 .slides img{width:100%;height:100%;object-fit:cover}
 .slides figcaption{position:absolute;right:24px;bottom:24px;background:rgba(0,0,0,.55);color:#fff;font-size:14px;padding:6px 12px}
 .slides figcaption a{text-decoration:none}
-@keyframes hw-fade{0%{opacity:0}3%{opacity:1}20%{opacity:1}23%{opacity:0}100%{opacity:0}}
 @media (prefers-reduced-motion:reduce){.slides figure{animation:none}.slides figure:not(:first-child){display:none}}
 .buehne-box{position:absolute;z-index:4;left:max(24px,calc((100vw - 1200px)/2 + 24px));bottom:56px;background:#fff;padding:40px 44px;max-width:520px;border-top:6px solid var(--orange)}
 .buehne-box h1{font-size:clamp(34px,4.4vw,52px);line-height:1.05;margin:0 0 16px}
