@@ -151,6 +151,10 @@ h2{font-size:clamp(28px,3.2vw,40px);line-height:1.15;margin:0 0 24px}
 .unterlagen a:hover{border-color:var(--orange)}
 .unterlagen .pdf{font-size:12px;font-weight:700;color:#fff;background:var(--orange);padding:3px 7px;border-radius:2px}
 .unterlagen small{margin-left:auto;color:var(--leise);font-weight:400}
+.plaene figure{margin:0}
+.plaene a{aspect-ratio:1.414/1;background:#fff;border:1px solid var(--linie)}
+.plaene img{object-fit:contain}
+.plaene figcaption{font-size:15px;color:var(--leise);margin-top:8px}
 .zurueck{display:inline-block;margin-top:48px;font-weight:600;text-decoration:none}
 .zurueck::before{content:"← ";color:var(--orange)}
 
