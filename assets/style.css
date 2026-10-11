@@ -1,0 +1,207 @@
+/* Hofer Wohnbau – gemeinsames Stylesheet aller Seiten */
+
+/* Hausschrift Hind (aus der alten Website übernommen, lokal eingebunden, kein Google-Server) */
+@font-face{font-family:Hind;font-weight:300;font-display:swap;src:url(fonts/hind-v16-latin-300.woff2) format("woff2")}
+@font-face{font-family:Hind;font-weight:400;font-display:swap;src:url(fonts/hind-v16-latin-regular.woff2) format("woff2")}
+@font-face{font-family:Hind;font-weight:500;font-display:swap;src:url(fonts/hind-v16-latin-500.woff2) format("woff2")}
+@font-face{font-family:Hind;font-weight:600;font-display:swap;src:url(fonts/hind-v16-latin-600.woff2) format("woff2")}
+@font-face{font-family:Hind;font-weight:700;font-display:swap;src:url(fonts/hind-v16-latin-700.woff2) format("woff2")}
+
+:root{--orange:#FF6900;--orange-dunkel:#E65F00;--anthrazit:#454545;--text:#2b2b2b;--leise:#5f5f5f;--linie:#e6e6e6;--hell:#F4F3F1}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:Hind,system-ui,sans-serif;line-height:1.6;color:var(--text);background:#fff;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:inherit}
+.wrap{max-width:1200px;margin:0 auto;padding:0 24px}
+
+/* Kopfzeile */
+.kopf{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.97);backdrop-filter:blur(6px);border-bottom:1px solid #eee}
+.kopf .wrap{display:flex;align-items:center;justify-content:space-between;height:76px}
+.logo{display:block;height:26px;color:var(--orange)}
+.logo svg{height:100%;width:auto;display:block}
+.nav{display:flex;gap:32px;align-items:center}
+.nav a{text-decoration:none;font-weight:500;font-size:16px}
+.nav a:hover,.nav a.aktiv{color:var(--orange)}
+.nav .knopf-klein{background:var(--orange);color:#fff;padding:10px 18px;border-radius:2px}
+.nav .knopf-klein:hover,.nav .knopf-klein.aktiv{color:#fff;background:var(--orange-dunkel)}
+.menue-knopf{display:none;background:none;border:0;padding:8px;cursor:pointer;color:var(--text)}
+.menue-knopf svg{width:28px;height:28px;display:block}
+
+/* Knöpfe, Überschriften */
+.knopf{display:inline-block;background:var(--orange);color:#fff;text-decoration:none;font-weight:600;padding:14px 26px;border-radius:2px;border:0;font:inherit;font-weight:600;cursor:pointer}
+.knopf:hover{background:var(--orange-dunkel)}
+.knopf.rahmen{background:transparent;color:var(--anthrazit);border:2px solid var(--anthrazit);padding:12px 24px}
+.knopf.rahmen:hover{background:var(--anthrazit);color:#fff}
+.knopf.rahmen.hell{color:#fff;border-color:#fff}
+.knopf.rahmen.hell:hover{background:#fff;color:var(--text)}
+section{padding:96px 0}
+.kicker{font-size:14px;letter-spacing:.14em;text-transform:uppercase;color:var(--orange);font-weight:600;margin:0 0 12px}
+h1,h2,h3{color:var(--anthrazit);font-weight:700}
+h2{font-size:clamp(28px,3.2vw,40px);line-height:1.15;margin:0 0 24px}
+.einleitung{font-size:19px;color:var(--leise);max-width:720px;margin:0}
+
+/* Startseite: Bühne mit wechselnden Projektbildern */
+.buehne{position:relative;height:min(82vh,760px);min-height:520px;overflow:hidden;background:#ddd}
+.slides{position:absolute;inset:0}
+.slides figure{position:absolute;inset:0;margin:0;opacity:0;animation:hw-fade 30s infinite}
+.slides figure:first-child{opacity:1;animation-delay:-1s}
+.slides figure:nth-child(2){animation-delay:5s}
+.slides figure:nth-child(3){animation-delay:11s}
+.slides figure:nth-child(4){animation-delay:17s}
+.slides figure:nth-child(5){animation-delay:23s}
+.slides img{width:100%;height:100%;object-fit:cover}
+.slides figcaption{position:absolute;right:24px;bottom:24px;background:rgba(0,0,0,.55);color:#fff;font-size:14px;padding:6px 12px}
+.slides figcaption a{text-decoration:none}
+@keyframes hw-fade{0%{opacity:0}3%{opacity:1}20%{opacity:1}23%{opacity:0}100%{opacity:0}}
+@media (prefers-reduced-motion:reduce){.slides figure{animation:none}.slides figure:not(:first-child){display:none}}
+.buehne-box{position:absolute;z-index:4;left:max(24px,calc((100vw - 1200px)/2 + 24px));bottom:56px;background:#fff;padding:40px 44px;max-width:520px;border-top:6px solid var(--orange)}
+.buehne-box h1{font-size:clamp(34px,4.4vw,52px);line-height:1.05;margin:0 0 16px}
+.buehne-box p{margin:0 0 24px;font-size:18px;color:var(--leise)}
+
+/* Einleitung mit Kennzahlen */
+.intro{display:grid;grid-template-columns:1.1fr 1fr;gap:72px;align-items:start}
+.intro p{font-size:19px;color:var(--leise);margin:0 0 16px}
+.zahlen{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--linie);border:1px solid var(--linie)}
+.zahl{background:#fff;padding:28px}
+.zahl b{display:block;font-size:40px;line-height:1.05;color:var(--orange);font-weight:700;margin-bottom:8px}
+.zahl span{color:var(--leise);font-size:16px}
+
+/* Projektkarten */
+.hell{background:var(--hell)}
+.p-kopf{display:flex;justify-content:space-between;align-items:flex-end;gap:32px;flex-wrap:wrap}
+.karten{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:40px}
+.karte{background:#fff;text-decoration:none;display:flex;flex-direction:column;transition:transform .25s,box-shadow .25s}
+.karte:hover{transform:translateY(-4px);box-shadow:0 18px 40px rgba(0,0,0,.08)}
+.karte .bild{aspect-ratio:3/2;overflow:hidden;background:#e9e9e9}
+.karte img{width:100%;height:100%;object-fit:cover}
+.karte .inhalt{padding:24px 26px 28px;display:flex;flex-direction:column;flex:1}
+.etikett{align-self:flex-start;font-size:13px;font-weight:600;color:var(--orange);border:1px solid var(--orange);padding:3px 10px;margin-bottom:14px}
+.karte h3{margin:0 0 6px;font-size:22px;line-height:1.25}
+.karte p{margin:0;color:#666}
+.karte .mehr{margin-top:auto;padding-top:18px;font-weight:600;color:var(--anthrazit)}
+.karte .mehr::after{content:" →";color:var(--orange)}
+.filter{display:flex;gap:10px;flex-wrap:wrap;margin-top:32px}
+.filter button{font:inherit;font-weight:500;background:#fff;border:1px solid #d6d6d6;padding:8px 18px;cursor:pointer;border-radius:2px}
+.filter button[aria-pressed="true"]{background:var(--anthrazit);color:#fff;border-color:var(--anthrazit)}
+.karte[hidden]{display:none}
+
+/* Versprechen */
+.vorteile{display:grid;grid-template-columns:repeat(4,1fr);gap:40px;margin-top:40px}
+.vorteil{border-top:2px solid var(--orange);padding-top:20px}
+.vorteil h3{margin:0 0 8px;font-size:20px}
+.vorteil p{margin:0;color:#666;font-size:16px}
+
+/* Referenzen */
+.dunkel{background:#2f2f2f;color:#fff}
+.dunkel h2,.dunkel h3{color:#fff}
+.dunkel p{color:#cfcfcf}
+.ref-start{display:grid;grid-template-columns:1fr 1.3fr;gap:72px;align-items:center}
+.ref-liste{list-style:none;margin:0;padding:0;columns:2;column-gap:40px}
+.ref-liste li{break-inside:avoid;padding:12px 0;border-bottom:1px solid #4a4a4a}
+.ref-liste b{display:block;font-weight:600}
+.ref-liste span{color:#aaa;font-size:15px}
+.ref-tabelle{width:100%;border-collapse:collapse;font-size:17px}
+.ref-tabelle td{padding:14px 0;border-bottom:1px solid var(--linie);vertical-align:top}
+.ref-tabelle td:last-child{text-align:right;color:var(--leise);padding-left:24px}
+
+/* Kontakt */
+.kontakt-raster{display:grid;grid-template-columns:1.2fr 1fr;gap:72px;align-items:start}
+.kontakt-box{background:var(--hell);padding:40px;border-left:6px solid var(--orange)}
+.kontakt-box p{margin:0 0 6px;font-size:18px}
+.kontakt-box a{text-decoration:none;font-weight:600}
+.formular{display:grid;gap:16px;margin-top:28px}
+.formular label{display:block;font-weight:500;margin-bottom:6px}
+.formular input,.formular textarea{width:100%;font:inherit;padding:12px 14px;border:1px solid #cfcfcf;border-radius:2px;background:#fff}
+.formular input:focus,.formular textarea:focus{outline:2px solid var(--orange);outline-offset:0;border-color:var(--orange)}
+.formular textarea{min-height:160px;resize:vertical}
+.formular .zwei{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.formular .klein{font-size:14px;color:var(--leise);margin:0}
+.formular .honig{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+
+/* Unterseiten */
+.seitenkopf{background:var(--hell);padding:72px 0 56px}
+.seitenkopf h1{font-size:clamp(34px,4.4vw,52px);line-height:1.08;margin:0 0 16px}
+.brotkrumen{font-size:15px;color:var(--leise);margin:0 0 20px}
+.brotkrumen a{text-decoration:none}
+.brotkrumen a:hover{color:var(--orange)}
+.text{max-width:780px}
+.text h2{font-size:26px;margin:40px 0 12px}
+.text h3{font-size:20px;margin:28px 0 8px}
+.text p,.text li{color:#444;font-size:17px}
+.liste-punkte{padding-left:20px}
+.liste-punkte li{margin-bottom:6px}
+.liste-punkte li::marker{color:var(--orange)}
+
+/* Projektseite */
+.projekt-titel{position:relative;height:min(64vh,620px);min-height:380px;overflow:hidden;background:#ddd}
+.projekt-titel img{width:100%;height:100%;object-fit:cover}
+.projekt-titel .titel-box{position:absolute;left:max(24px,calc((100vw - 1200px)/2 + 24px));bottom:40px;background:#fff;padding:32px 36px;max-width:600px;border-top:6px solid var(--orange)}
+.projekt-titel h1{font-size:clamp(28px,3.6vw,44px);line-height:1.1;margin:0}
+.projekt-titel .brotkrumen{margin-bottom:12px}
+.projekt-raster{display:grid;grid-template-columns:1.6fr 1fr;gap:64px;align-items:start}
+.eckdaten{background:var(--hell);padding:32px}
+.eckdaten h2{font-size:22px;margin:0 0 12px}
+.eckdaten dl{margin:0}
+.eckdaten div{display:flex;justify-content:space-between;gap:16px;padding:10px 0;border-bottom:1px solid #ddd}
+.eckdaten dt{color:var(--leise)}
+.eckdaten dd{margin:0;text-align:right;font-weight:500}
+.galerie{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px;margin-top:32px}
+.galerie a{display:block;aspect-ratio:4/3;overflow:hidden;background:#e9e9e9;cursor:zoom-in}
+.galerie img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.galerie a:hover img{transform:scale(1.04)}
+.unterlagen{list-style:none;padding:0;margin:24px 0 0;display:grid;gap:10px}
+.unterlagen a{display:flex;align-items:center;gap:14px;padding:16px 20px;border:1px solid var(--linie);text-decoration:none;font-weight:500}
+.unterlagen a:hover{border-color:var(--orange)}
+.unterlagen .pdf{font-size:12px;font-weight:700;color:#fff;background:var(--orange);padding:3px 7px;border-radius:2px}
+.unterlagen small{margin-left:auto;color:var(--leise);font-weight:400}
+.zurueck{display:inline-block;margin-top:48px;font-weight:600;text-decoration:none}
+.zurueck::before{content:"← ";color:var(--orange)}
+
+/* Bildbetrachter */
+.betrachter{position:fixed;inset:0;z-index:100;background:rgba(15,15,15,.94);display:none;align-items:center;justify-content:center}
+.betrachter.offen{display:flex}
+.betrachter img{max-width:92vw;max-height:84vh;object-fit:contain;box-shadow:0 10px 40px rgba(0,0,0,.5)}
+.betrachter button{position:absolute;background:rgba(255,255,255,.1);color:#fff;border:0;width:52px;height:52px;border-radius:50%;font-size:26px;line-height:1;cursor:pointer}
+.betrachter button:hover{background:var(--orange)}
+.betrachter .zu{top:20px;right:20px}
+.betrachter .vor{right:20px;top:50%;transform:translateY(-50%)}
+.betrachter .zur{left:20px;top:50%;transform:translateY(-50%)}
+.betrachter .zaehler{position:absolute;bottom:20px;left:0;right:0;text-align:center;color:#ccc;font-size:15px}
+
+/* Fußzeile */
+.fuss{background:#2f2f2f;color:#cfcfcf;padding:56px 0 28px;font-size:16px}
+.fuss .wrap{display:grid;grid-template-columns:auto 1fr 1fr;gap:56px}
+.fuss .h-logo{width:56px;color:var(--orange)}
+.fuss b{color:#fff}
+.fuss p{margin:0 0 4px}
+.fuss a{text-decoration:none}
+.fuss a:hover{color:var(--orange)}
+.fuss nav{display:flex;flex-direction:column;gap:6px}
+.fuss .unten{grid-column:1/-1;border-top:1px solid #444;padding-top:20px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:14px;color:#999}
+.fuss .unten nav{flex-direction:row;gap:24px}
+
+@media (max-width:900px){
+  .wrap{padding:0 16px}
+  section{padding:64px 0}
+  .menue-knopf{display:block}
+  .nav{display:none;position:absolute;top:76px;left:0;right:0;background:#fff;flex-direction:column;align-items:stretch;gap:0;padding:8px 16px 20px;border-bottom:1px solid #eee;box-shadow:0 12px 24px rgba(0,0,0,.06)}
+  .nav.offen{display:flex}
+  .nav a{padding:14px 0;border-bottom:1px solid #f0f0f0}
+  .nav .knopf-klein{margin-top:12px;text-align:center;border:0}
+  .intro,.ref-start,.kontakt-raster,.projekt-raster{grid-template-columns:1fr;gap:40px}
+  .karten{grid-template-columns:1fr 1fr}
+  .vorteile{grid-template-columns:1fr 1fr}
+  .buehne-box,.projekt-titel .titel-box{left:16px;right:16px;bottom:16px;padding:24px}
+  .fuss .wrap{grid-template-columns:1fr 1fr;gap:32px}
+  .fuss .h-logo{grid-column:1/-1}
+}
+@media (max-width:600px){
+  .karten,.vorteile,.zahlen,.formular .zwei{grid-template-columns:1fr}
+  .ref-liste{columns:1}
+  .fuss .wrap{grid-template-columns:1fr}
+  .ref-tabelle td{display:block;text-align:left!important;padding:2px 0}
+  .ref-tabelle td:first-child{padding-top:14px;font-weight:600;border:0}
+  .ref-tabelle td:last-child{padding:0 0 14px}
+  .buehne{min-height:560px}
+}
